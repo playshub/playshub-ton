@@ -1,0 +1,33 @@
+<head>
+  <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+  <script src="https://unpkg.com/tonweb@latest/dist/tonweb.js"></script>
+</head>
+<body>
+  <script src="./load-sdk.js">
+  </script>
+
+  <button id="connect" onclick="UNITY_TON_PLUGIN.connect()">Connect</button>
+  <button id="disconnect" onclick="UNITY_TON_PLUGIN.disconnect()">Disconnect</button>
+  <button id="isConnected" onclick="IsConnected()">Is connected ?</button>
+  <button id="getAccount" onclick="GetAccount()">Get Account</button>
+  <button id="sendTon" onclick="UNITY_TON_PLUGIN.sendTon({
+    validUntil:  Math.floor(Date.now() / 1000) + 60,
+    address: 'EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA',
+    amount: '20000000',
+    comment: 'test test test test test'
+  })">Send ton</button>
+
+  <p id="showIsConnected"></p>
+  <p id="showGetAccount"></p>
+
+  <script>
+    function IsConnected() {
+    
+      document.getElementById("showIsConnected").innerHTML = UNITY_TON_PLUGIN.isConnected();
+    }
+
+    function GetAccount() {
+      document.getElementById("showGetAccount").innerHTML = JSON.stringify(UNITY_TON_PLUGIN.getAccount());
+    }
+  </script>
+</body>

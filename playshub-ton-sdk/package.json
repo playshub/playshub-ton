@@ -1,0 +1,26 @@
+{
+  "name": "@playshub/ton-sdk",
+  "version": "1.1.6",
+  "main": "dist/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "files": [
+    "dist"
+  ],
+  "author": "0xcuonghx",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tonconnect/ui": "^2.0.5",
+    "tonweb": "^0.0.66",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.2",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
