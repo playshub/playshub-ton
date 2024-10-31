@@ -11,7 +11,7 @@
 - Handle TON payment for Playshub shop
 - Send proceed TON payment events via websocket
 - Support withdraw and deposit TON
-- Further, Handle JETTON (CatB) & NFT (CatNFT) processing (Under development in `nft` branch)
+- Further, Handle JETTON & NFT processing (Under development in `nft` branch)
 
 # Technique
 
@@ -42,6 +42,7 @@ playshub-blockchain/
 │   │   ├── account-transaction/
 │   │   ├── hmac/
 │   │   ├── notification/
+│   │   ├── telegram-payment-subscriber/
 │   │   ├── ton/
 │   │   └── ton-wallet/
 │   ├── utils/
@@ -57,10 +58,10 @@ playshub-blockchain/
 
 - `src/`:` Contains the source code, including components and styles.
 - `migrations/`: Contains database TypeORM migrations scripts
-- `modules/account-subscriber`: TON payment processor
+- `modules/account-subscriber`: Handle payment by TON
 - `modules/account-transaction`: parse and aggregate TON transaction
 - `modules/hmac`: HMAC authorize withdraw api for game server
-
+- `modules/telegram-payment-subscriber`: Handle payment by Telegram stars
 - `modules/notification`: Send `ws` or `webhook` for service listeners
 - `modules/ton`: TON client
 - `modules/ton-wallet`: TON wallet management (WalletV4R2, HighloadWallet) functionality
