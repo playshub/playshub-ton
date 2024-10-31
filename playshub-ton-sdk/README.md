@@ -24,7 +24,7 @@
 - ℹ️ If you don't want auto-update the library, pass concrete version instead of latest, e.g.
 
 ```html
-<script src="https://unpkg.com/@playshub/ton-sdk@1.1.0"></script>
+<script src="https://unpkg.com/@playshub/ton-sdk@0.0.1"></script>
 ```
 
 - Add `load-sdk.js` scripts

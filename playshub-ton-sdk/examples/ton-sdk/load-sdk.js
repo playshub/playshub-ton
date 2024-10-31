@@ -1,7 +1,7 @@
 async function loadSdk() {
   const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
     manifestUrl:
-      "https://github.com/playshub/playshub-ton/playshub-ton-sdk/-/raw/24ab800766743ecec5283db161fcf6a7b6ce9a97/figures/tonconnect-manifest.json",
+      "https://raw.githubusercontent.com/playshub/playshub-ton/refs/heads/main/playshub-ton-sdk/figures/tonconnect-manifest.json",
   });
 
   async function textToBase64(text) {
