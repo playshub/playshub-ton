@@ -1,4 +1,4 @@
-# Cat Battle Ton SDK
+# Playshub Ton SDK
 
 ## Features
 
@@ -123,7 +123,7 @@ plugin.sendTon(
 
 ## Authors and acknowledgment
 
-Cat Battle Team
+Playshub Team
 
 ## License
 
@@ -131,4 +131,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Project status
 
-We are still developing this project following the roadmap in here: https://catb.io/
+We are still developing this project following the roadmap in here: https://playshub.io/
