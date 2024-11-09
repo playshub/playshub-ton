@@ -20,7 +20,6 @@ class AeonService {
         body
       );
 
-      console.log(response);
       console.log(response.data);
       console.log(JSON.stringify(response.data));
 
@@ -45,10 +44,10 @@ class AeonService {
       orderAmount: parseFloat(amount),
       payCurrency: "USD",
       paymentTokens: "USDT",
-      userId: "myonis@tontopia.com",
+      userId: "cuonghx.ngen@gmail.com",
       tgModel: "MINIAPP",
       expiredTime: 1800,
-      callbackURL: `${process.env.BASE_HOST}/webhook/aeon`,
+      // callbackURL: `${process.env.BASE_HOST}/webhook/aeon`,
       orderModel: "ORDER",
     };
 
