@@ -9,7 +9,7 @@ export class WebhooksService {
   constructor(private readonly aeonService: AeonService) {}
 
   callback(callbackDto: CallbackDto) {
-    this.logger.debug(`Received callback with:`, callbackDto);
+    this.logger.debug(`Received callback with: ${JSON.stringify(callbackDto)}`);
     try {
       if (
         !this.aeonService.verify(
