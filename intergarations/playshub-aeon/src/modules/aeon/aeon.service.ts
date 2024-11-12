@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import {
   AeonCreateOrderParameters,
   AeonCreateOrderSignParameters,
+  AeonQueryOrderSignParameters,
   AeonWebhookCallbackSignParameters,
 } from 'src/types/aeon';
 import crypto from 'crypto';
@@ -71,8 +72,42 @@ export class AeonService {
     }
   }
 
+  async getOrder(merchantOrderNo: string) {
+    try {
+      const signParams: AeonQueryOrderSignParameters = {
+        appId: this.appId,
+        merchantOrderNo,
+      };
+      const params = {
+        ...signParams,
+        sign: this.sign(signParams),
+      };
+
+      const response = await fetch(`${this.baseUrl}/open/api/payment/query`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify(params),
+      });
+
+      if (!response.ok) {
+        throw new BadRequestException(await response.text());
+      }
+
+      return response.json();
+    } catch (error) {
+      this.logger.error('Get order failed');
+      this.logger.debug(error);
+      throw error;
+    }
+  }
+
   private sign(
-    params: AeonCreateOrderSignParameters | AeonWebhookCallbackSignParameters,
+    params:
+      | AeonCreateOrderSignParameters
+      | AeonWebhookCallbackSignParameters
+      | AeonQueryOrderSignParameters,
   ) {
     const sortedKeys = Object.keys(params).sort();
     const queryString = sortedKeys

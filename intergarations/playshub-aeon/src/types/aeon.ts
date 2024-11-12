@@ -35,3 +35,8 @@ export interface AeonWebhookCallbackSignParameters {
   orderCurrency: string;
   orderAmount: string;
 }
+
+export interface AeonQueryOrderSignParameters {
+  appId: string;
+  merchantOrderNo: string;
+}

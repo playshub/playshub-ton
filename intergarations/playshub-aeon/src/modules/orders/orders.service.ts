@@ -9,4 +9,8 @@ export class OrdersService {
   createOrder(args: CreateOrderDto) {
     return this.aeonService.createOrder(args);
   }
+
+  queryOrder(merchantOrderNo: string) {
+    return this.aeonService.getOrder(merchantOrderNo);
+  }
 }
