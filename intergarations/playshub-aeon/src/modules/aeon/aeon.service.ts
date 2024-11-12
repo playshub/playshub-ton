@@ -32,14 +32,14 @@ export class AeonService {
         orderAmount: amount,
         payCurrency: 'USD',
         userId,
-        paymentTokens: 'TON',
+        paymentTokens: 'USDT',
       };
       const params: AeonCreateOrderParameters = {
         ...signParams,
         sign: this.sign(signParams),
         callbackURL: this.callbackUrl,
         expiredTime: 1800,
-        payType: 'USDT',
+        paymentNetworks: 'BSC',
         orderModel: 'ORDER',
         tgModel: 'MINIAPP',
       };
