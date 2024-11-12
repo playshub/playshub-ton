@@ -39,7 +39,7 @@ export class AeonService {
         sign: this.sign(signParams),
         callbackURL: this.callbackUrl,
         expiredTime: 60,
-        paymentNetworks: 'TON',
+        paymentNetworks: 'BSC,ETH',
         orderModel: 'ORDER',
         tgModel: 'MINIAPP',
       };
