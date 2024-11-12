@@ -31,14 +31,16 @@ export class AeonService {
         orderAmount: amount,
         payCurrency: 'USD',
         userId,
-        paymentTokens: 'USDT',
+        paymentTokens: 'TON',
       };
       const params: AeonCreateOrderParameters = {
         ...signParams,
         sign: this.sign(signParams),
         callbackURL: this.callbackUrl,
         expiredTime: 1800,
+        paymentNetworks: 'TON',
         orderModel: 'ORDER',
+        tgModel: 'MINIAPP',
       };
 
       const response = await fetch(`${this.baseUrl}/open/api/tg/payment/V2`, {

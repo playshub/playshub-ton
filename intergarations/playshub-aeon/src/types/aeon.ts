@@ -12,7 +12,7 @@ export interface AeonCreateOrderParameters {
   customPrams?: string;
   expiredTime?: number;
   payType?: string;
-  paymentNetwork?: string;
+  paymentNetworks?: string;
   orderModel?: 'ORDER' | 'RECHARGE';
   tgModel?: 'BROWSER' | 'MINIAPP' | 'BOT';
 }
