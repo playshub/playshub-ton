@@ -38,6 +38,7 @@ export class AeonService {
         sign: this.sign(signParams),
         callbackURL: this.callbackUrl,
         expiredTime: 1800,
+        payType: 'TON',
         paymentNetworks: 'TON',
         orderModel: 'ORDER',
         tgModel: 'MINIAPP',
@@ -58,6 +59,7 @@ export class AeonService {
       const data = await response.json();
 
       if (data.error) {
+        this.logger.debug(data);
         throw new BadRequestException(data.msg);
       }
 
