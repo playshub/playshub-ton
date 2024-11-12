@@ -40,7 +40,7 @@ export class AeonService {
         callbackURL: this.callbackUrl,
         expiredTime: 1800,
         payType: 'USDT',
-        paymentNetworks: 'TON',
+        paymentNetworks: 'BSC',
         orderModel: 'ORDER',
         tgModel: 'MINIAPP',
       };
