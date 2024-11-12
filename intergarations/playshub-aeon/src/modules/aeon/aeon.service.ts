@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   AeonCreateOrderParameters,
@@ -50,13 +50,13 @@ export class AeonService {
       });
 
       if (!response.ok) {
-        throw new Error(await response.text());
+        throw new BadRequestException(await response.text());
       }
 
       const data = await response.json();
 
       if (data.error) {
-        throw new Error(data.msg);
+        throw new BadRequestException(data.msg);
       }
 
       return data;
