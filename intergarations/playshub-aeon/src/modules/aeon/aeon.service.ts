@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import {
   AeonCreateOrderParameters,
   AeonCreateOrderSignParameters,
+  AeonWebhookCallbackSignParameters,
 } from 'src/types/aeon';
 import crypto from 'crypto';
 import { CreateOrderDto } from '../orders/dtos/create-order.dto';
@@ -71,7 +72,9 @@ export class AeonService {
     }
   }
 
-  private sign(params: AeonCreateOrderSignParameters) {
+  private sign(
+    params: AeonCreateOrderSignParameters | AeonWebhookCallbackSignParameters,
+  ) {
     const sortedKeys = Object.keys(params).sort();
     const queryString = sortedKeys
       .map((key) => `${key}=${params[key]}`)
@@ -85,7 +88,7 @@ export class AeonService {
       .toUpperCase();
   }
 
-  async verify(params: AeonCreateOrderSignParameters, signature: string) {
+  async verify(params: AeonWebhookCallbackSignParameters, signature: string) {
     try {
       return this.sign(params) === signature;
     } catch (error) {

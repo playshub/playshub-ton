@@ -26,3 +26,12 @@ export interface AeonCreateOrderSignParameters {
   paymentExchange?: string;
   paymentTokens?: string;
 }
+
+export interface AeonWebhookCallbackSignParameters {
+  orderNo: string;
+  orderStatus: string;
+  userId: string;
+  merchantOrderNo: string;
+  orderCurrency: string;
+  orderAmount: string;
+}

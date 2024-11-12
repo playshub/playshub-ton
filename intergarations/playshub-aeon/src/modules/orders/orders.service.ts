@@ -9,8 +9,4 @@ export class OrdersService {
   createOrder(args: CreateOrderDto) {
     return this.aeonService.createOrder(args);
   }
-
-  callback() {
-    return true;
-  }
 }
