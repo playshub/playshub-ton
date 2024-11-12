@@ -31,7 +31,7 @@ export class AeonService {
         orderAmount: amount,
         payCurrency: 'USD',
         userId,
-        paymentTokens: 'TON',
+        paymentTokens: 'USDT',
       };
       const params: AeonCreateOrderParameters = {
         ...signParams,
