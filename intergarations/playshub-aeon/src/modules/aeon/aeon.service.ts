@@ -38,7 +38,7 @@ export class AeonService {
         ...signParams,
         sign: this.sign(signParams),
         callbackURL: this.callbackUrl,
-        expiredTime: 1800,
+        expiredTime: 60,
         paymentNetworks: 'TON',
         orderModel: 'ORDER',
         tgModel: 'MINIAPP',
