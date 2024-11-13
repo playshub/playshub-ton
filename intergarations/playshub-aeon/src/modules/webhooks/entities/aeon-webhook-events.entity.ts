@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { OrderStatus } from '../dtos/callback.dto';
 
 @Entity({
@@ -26,6 +26,6 @@ export class AeonWebhookEventEntity {
   @Column()
   orderAmount: string;
 
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   sign: string;
 }
