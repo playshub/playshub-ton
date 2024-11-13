@@ -53,7 +53,7 @@ export class WebhooksService {
         .execute();
 
       if (inserted.raw.length !== 0) {
-        this.eventEmitter.emit('aeon-webhook-event.found', inserted.raw[0]);
+        this.eventEmitter.emit('aeon-webhook-event.received', inserted.raw[0]);
       }
     } catch (error) {
       this.logger.error('Webhooks callback error');
