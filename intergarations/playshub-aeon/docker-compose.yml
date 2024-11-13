@@ -4,7 +4,7 @@ services:
     container_name: playshub-aeon-postgres
     image: postgres:latest
     ports:
-      - 4002:5432
+      - 2997:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
