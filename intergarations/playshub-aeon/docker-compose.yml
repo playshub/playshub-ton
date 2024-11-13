@@ -1,0 +1,15 @@
+version: '3'
+services:
+  playshub-aeon-postgres:
+    container_name: playshub-aeon-postgres
+    image: postgres:latest
+    ports:
+      - 4002:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - playshub-aeon-postgres-data:/var/lib/postgresql/data
+volumes:
+  playshub-aeon-postgres-data:
