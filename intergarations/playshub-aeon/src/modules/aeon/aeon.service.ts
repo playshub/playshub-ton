@@ -7,7 +7,7 @@ import {
   AeonWebhookCallbackSignParameters,
 } from 'src/types/aeon';
 import crypto from 'crypto';
-import { CreateOrderDto } from '../orders/dtos/create-order.dto';
+import { CreateOrderDto } from './dtos/create-order.dto';
 
 @Injectable()
 export class AeonService {
