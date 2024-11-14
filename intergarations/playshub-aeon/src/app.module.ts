@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { CheckInModule } from './modules/check-in/check-in.module';
 import { AeonModule } from './modules/aeon/aeon.module';
+import { PurchaseItemModule } from './modules/purchase-item/check-in.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AeonModule } from './modules/aeon/aeon.module';
     AeonModule,
     AeonWebhooksModule,
     CheckInModule,
+    PurchaseItemModule,
   ],
 })
 export class AppModule {
