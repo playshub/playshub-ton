@@ -5,6 +5,7 @@ import { AeonWebhooksModule } from './modules/aeon-webhooks/aeon-webhooks.module
 import { HttpLoggerMiddleware } from './middlewares/http-logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { CheckInModule } from './modules/check-in/check-in.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     EventEmitterModule.forRoot(),
     OrdersModule,
     AeonWebhooksModule,
+    CheckInModule,
   ],
 })
 export class AppModule {

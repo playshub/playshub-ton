@@ -1,6 +1,6 @@
 import { IsEnum, IsString } from 'class-validator';
 
-export enum OrderStatus {
+export enum AeonOrderStatus {
   COMPLETED = 'COMPLETED',
   CLOSE = 'CLOSE',
   TIMEOUT = 'TIMEOUT',
@@ -13,8 +13,8 @@ export class AeonCallbackDto {
   @IsString()
   orderNo: string;
 
-  @IsEnum(OrderStatus)
-  orderStatus: OrderStatus;
+  @IsEnum(AeonOrderStatus)
+  orderStatus: AeonOrderStatus;
 
   @IsString()
   userId: string;

@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
-import { OrderStatus } from '../dtos/aeon-callback.dto';
+import { AeonOrderStatus } from '../dtos/aeon-callback.dto';
 
 @Entity({
   name: 'aeon_webhook_events',
@@ -10,9 +10,9 @@ export class AeonWebhookEventEntity {
 
   @Column({
     type: 'enum',
-    enum: OrderStatus,
+    enum: AeonOrderStatus,
   })
-  orderStatus: OrderStatus;
+  orderStatus: AeonOrderStatus;
 
   @Column()
   userId: string;
