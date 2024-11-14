@@ -7,6 +7,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { CheckInModule } from './modules/check-in/check-in.module';
 import { AeonModule } from './modules/aeon/aeon.module';
 import { PurchaseItemModule } from './modules/purchase-item/check-in.module';
+import { NotificationModule } from './modules/notification/notification.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { PurchaseItemModule } from './modules/purchase-item/check-in.module';
     AeonWebhooksModule,
     CheckInModule,
     PurchaseItemModule,
+    NotificationModule,
   ],
 })
 export class AppModule {

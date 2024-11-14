@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { AeonService } from '../aeon/aeon.service';
-import { OnEvent } from '@nestjs/event-emitter';
+import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { AeonWebhookEventEntity } from '../aeon-webhooks/entities/aeon-webhook-events.entity';
 import { CheckInDto } from './dtos/check-in.dto';
 import { ConfigService } from '@nestjs/config';
@@ -25,6 +25,7 @@ export class CheckInService {
     private readonly configService: ConfigService,
     @InjectRepository(CheckInOrderEntity)
     private checkInOrdersRepository: Repository<CheckInOrderEntity>,
+    private eventEmitter: EventEmitter2,
   ) {
     this.amount = this.configService.get<string>('CHECK_IN_AMOUNT');
   }
@@ -57,7 +58,7 @@ export class CheckInService {
 
   @OnEvent('aeon-webhook-event.received')
   async onAeonWebhookEventReceived(event: AeonWebhookEventEntity) {
-    const checkInOrder = this.checkInOrdersRepository.findOne({
+    const checkInOrder = await this.checkInOrdersRepository.findOne({
       where: { orderNo: event.orderNo },
     });
 
@@ -68,6 +69,10 @@ export class CheckInService {
     this.logger.debug(`Received webhook event: ${JSON.stringify(event)}`);
 
     if (event.orderStatus === AeonOrderStatus.COMPLETED) {
+      this.eventEmitter.emit('aeon.check-in.completed', {
+        userId: checkInOrder.userId,
+        timestamp: checkInOrder.timestamp,
+      });
       return this.checkInOrdersRepository.update(
         { orderNo: event.orderNo },
         { status: CheckInOrderStatus.SUCCESS },

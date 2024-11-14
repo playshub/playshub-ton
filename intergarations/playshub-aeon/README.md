@@ -4,8 +4,8 @@
 - Webhooks
   - [x] callback routes
   - [x] handle duplicate notifications
-  - [ ] handle callbacks
+  - [x] handle callbacks
 - Orders
-  - [ ] Save orders to database
+  - [x] Save orders to database
 - Notification
   - [ ] Send externals notification

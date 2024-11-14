@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { AeonService } from '../aeon/aeon.service';
-import { OnEvent } from '@nestjs/event-emitter';
+import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { AeonWebhookEventEntity } from '../aeon-webhooks/entities/aeon-webhook-events.entity';
 import { PurchaseItemDto } from './dtos/purchase-item.dto';
 import { ConfigService } from '@nestjs/config';
@@ -22,6 +22,7 @@ export class PurchaseItemService {
     private readonly aeonService: AeonService,
     @InjectRepository(PurchaseItemOrderEntity)
     private purchaseItemOrdersRepository: Repository<PurchaseItemOrderEntity>,
+    private eventEmitter: EventEmitter2,
   ) {}
 
   async purchase(args: PurchaseItemDto) {
@@ -53,7 +54,7 @@ export class PurchaseItemService {
 
   @OnEvent('aeon-webhook-event.received')
   async onAeonWebhookEventReceived(event: AeonWebhookEventEntity) {
-    const purchaseItemOrder = this.purchaseItemOrdersRepository.findOne({
+    const purchaseItemOrder = await this.purchaseItemOrdersRepository.findOne({
       where: { orderNo: event.orderNo },
     });
 
@@ -64,6 +65,11 @@ export class PurchaseItemService {
     this.logger.debug(`Received webhook event: ${JSON.stringify(event)}`);
 
     if (event.orderStatus === AeonOrderStatus.COMPLETED) {
+      this.eventEmitter.emit('aeon.purchase-item.completed', {
+        userId: purchaseItemOrder.userId,
+        itemId: purchaseItemOrder.itemId,
+        amount: purchaseItemOrder.amount,
+      });
       return this.purchaseItemOrdersRepository.update(
         { orderNo: event.orderNo },
         { status: PurchaseItemOrderStatus.SUCCESS },
