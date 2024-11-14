@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { OrdersModule } from './modules/orders/orders.module';
-import { WebhooksModule } from './modules/webhooks/webhooks.module';
+import { AeonWebhooksModule } from './modules/aeon-webhooks/aeon-webhooks.module';
 import { HttpLoggerMiddleware } from './middlewares/http-logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
@@ -21,7 +21,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     }),
     EventEmitterModule.forRoot(),
     OrdersModule,
-    WebhooksModule,
+    AeonWebhooksModule,
   ],
 })
 export class AppModule {

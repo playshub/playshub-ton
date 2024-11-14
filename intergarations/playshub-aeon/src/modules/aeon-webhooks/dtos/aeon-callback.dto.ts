@@ -9,7 +9,7 @@ export enum OrderStatus {
   DELAY_FAILED = 'DELAY_FAILED',
 }
 
-export class CallbackDto {
+export class AeonCallbackDto {
   @IsString()
   orderNo: string;
 

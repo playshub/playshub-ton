@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import { CallbackDto } from './dtos/callback.dto';
+import { AeonCallbackDto } from './dtos/aeon-callback.dto';
 import { AeonService } from '../aeon/aeon.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AeonWebhookEventEntity } from './entities/aeon-webhook-events.entity';
@@ -7,8 +7,8 @@ import { Repository } from 'typeorm';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
-export class WebhooksService {
-  private readonly logger = new Logger(WebhooksService.name);
+export class AeonWebhooksService {
+  private readonly logger = new Logger(AeonWebhooksService.name);
 
   constructor(
     private readonly aeonService: AeonService,
@@ -17,7 +17,7 @@ export class WebhooksService {
     private eventEmitter: EventEmitter2,
   ) {}
 
-  async callback(callbackDto: CallbackDto) {
+  async callback(callbackDto: AeonCallbackDto) {
     this.logger.debug(`Received callback with: ${JSON.stringify(callbackDto)}`);
     try {
       if (

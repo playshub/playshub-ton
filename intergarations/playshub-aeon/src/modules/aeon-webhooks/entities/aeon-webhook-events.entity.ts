@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
-import { OrderStatus } from '../dtos/callback.dto';
+import { OrderStatus } from '../dtos/aeon-callback.dto';
 
 @Entity({
   name: 'aeon_webhook_events',

@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AeonService } from '../aeon/aeon.service';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OnEvent } from '@nestjs/event-emitter';
-import { AeonWebhookEventEntity } from '../webhooks/entities/aeon-webhook-events.entity';
+import { AeonWebhookEventEntity } from '../aeon-webhooks/entities/aeon-webhook-events.entity';
 
 @Injectable()
 export class OrdersService {
