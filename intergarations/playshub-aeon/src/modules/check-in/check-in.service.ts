@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { AeonService } from '../aeon/aeon.service';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { AeonWebhookEventEntity } from '../aeon-webhooks/entities/aeon-webhook-events.entity';
@@ -32,6 +32,20 @@ export class CheckInService {
 
   async checkIn(args: CheckInDto) {
     try {
+      const todayCheckIn = await this.checkInOrdersRepository
+        .createQueryBuilder('order')
+        .where('order.userId = :userId', { userId: args.userId })
+        .andWhere('order.timestamp BETWEEN :startOfDay AND :endOfDay', {
+          startOfDay: moment().startOf('day').unix(),
+          endOfDay: moment().endOf('day').unix(),
+        })
+        .getOne();
+
+      if (todayCheckIn) {
+        this.logger.debug(`User ${args.userId} has already checked in today`);
+        throw new BadRequestException('You have already checked in today');
+      }
+
       const checkInOrder = await this.checkInOrdersRepository.save({
         orderNo: generateOrderNo(),
         userId: args.userId,
