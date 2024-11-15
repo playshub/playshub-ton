@@ -18,7 +18,7 @@ services:
     container_name: playshub-aeon-service
     environment:
       - PORT=3000
-      - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@playshub-aeon-postgres:5432/${POSTGRES_DB}
+      - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@playshub-aeon-postgres:5432/playshub-aeon-postgres
       - CHECK_IN_AMOUNT=${CHECK_IN_AMOUNT}
       - AEON_BASE_URL=${AEON_BASE_URL}
       - AEON_APP_ID=${AEON_APP_ID}
