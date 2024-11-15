@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
-import { NotificationGateway } from './notification.gateway';
+import { PlayshubSocketService } from './socket/playshub-socket.service';
+import { PlayshubWebhookService } from './webhooks/playshub-webhook.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  providers: [NotificationGateway],
+  imports: [ConfigModule],
+  providers: [PlayshubSocketService, PlayshubWebhookService],
 })
 export class NotificationModule {}
