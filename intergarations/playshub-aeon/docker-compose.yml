@@ -11,22 +11,22 @@ services:
       - POSTGRES_DB=playshub-aeon-postgres
     volumes:
       - playshub-aeon-postgres-data:/var/lib/postgresql/data
-  playshub-aeon-service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: playshub-aeon-service
-    environment:
-      - PORT=3000
-      - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@playshub-aeon-postgres:5432/${POSTGRES_DB}
-      - CHECK_IN_AMOUNT=${CHECK_IN_AMOUNT}
-      - AEON_BASE_URL=${AEON_BASE_URL}
-      - AEON_APP_ID=${AEON_APP_ID}
-      - AEON_SECRET_KEY=${AEON_SECRET_KEY}
-      - AEON_CALLBACK_URL=${AEON_CALLBACK_URL}
-    ports:
-      - '${PORT}:3000'
-    depends_on:
-      - playshub-aeon-postgres
+  # playshub-aeon-service:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: playshub-aeon-service
+  #   environment:
+  #     - PORT=3000
+  #     - POSTGRES_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@playshub-aeon-postgres:5432/${POSTGRES_DB}
+  #     - CHECK_IN_AMOUNT=${CHECK_IN_AMOUNT}
+  #     - AEON_BASE_URL=${AEON_BASE_URL}
+  #     - AEON_APP_ID=${AEON_APP_ID}
+  #     - AEON_SECRET_KEY=${AEON_SECRET_KEY}
+  #     - AEON_CALLBACK_URL=${AEON_CALLBACK_URL}
+  #   ports:
+  #     - '${PORT}:3000'
+  #   depends_on:
+  #     - playshub-aeon-postgres
 volumes:
   playshub-aeon-postgres-data:

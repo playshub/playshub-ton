@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsString } from 'class-validator';
 
 export enum AeonOrderStatus {
@@ -11,23 +12,30 @@ export enum AeonOrderStatus {
 
 export class AeonCallbackDto {
   @IsString()
+  @ApiProperty()
   orderNo: string;
 
   @IsEnum(AeonOrderStatus)
+  @ApiProperty()
   orderStatus: AeonOrderStatus;
 
   @IsString()
+  @ApiProperty()
   userId: string;
 
   @IsString()
+  @ApiProperty()
   merchantOrderNo: string;
 
   @IsString()
+  @ApiProperty()
   orderCurrency: string;
 
   @IsString()
+  @ApiProperty()
   orderAmount: string;
 
   @IsString()
+  @ApiProperty()
   sign: string;
 }
