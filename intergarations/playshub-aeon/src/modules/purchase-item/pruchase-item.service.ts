@@ -41,10 +41,10 @@ export class PurchaseItemService {
         userId: args.userId,
       });
 
-      return this.purchaseItemOrdersRepository.update(
-        { orderNo: purchaseItemOrder.orderNo },
-        { status: PurchaseItemOrderStatus.PENDING },
-      );
+      return this.purchaseItemOrdersRepository.save({
+        ...purchaseItemOrder,
+        status: PurchaseItemOrderStatus.PENDING,
+      });
     } catch (error) {
       this.logger.error('Purchase item error');
       this.logger.debug(error);

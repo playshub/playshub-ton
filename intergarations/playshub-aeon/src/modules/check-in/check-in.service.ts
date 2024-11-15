@@ -59,10 +59,10 @@ export class CheckInService {
         userId: args.userId,
       });
 
-      return this.checkInOrdersRepository.update(
-        { orderNo: checkInOrder.orderNo },
-        { status: CheckInOrderStatus.PENDING },
-      );
+      return this.checkInOrdersRepository.save({
+        ...checkInOrder,
+        status: CheckInOrderStatus.PENDING,
+      });
     } catch (error) {
       this.logger.error('Check-in error');
       this.logger.debug(error);
