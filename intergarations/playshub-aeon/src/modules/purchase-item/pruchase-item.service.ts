@@ -55,7 +55,7 @@ export class PurchaseItemService {
   @OnEvent('aeon-webhook-event.received')
   async onAeonWebhookEventReceived(event: AeonWebhookEventEntity) {
     const purchaseItemOrder = await this.purchaseItemOrdersRepository.findOne({
-      where: { orderNo: event.orderNo },
+      where: { orderNo: event.merchantOrderNo },
     });
 
     if (!purchaseItemOrder) {

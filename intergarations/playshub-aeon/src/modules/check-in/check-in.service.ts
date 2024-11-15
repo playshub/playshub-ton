@@ -73,7 +73,7 @@ export class CheckInService {
   @OnEvent('aeon-webhook-event.received')
   async onAeonWebhookEventReceived(event: AeonWebhookEventEntity) {
     const checkInOrder = await this.checkInOrdersRepository.findOne({
-      where: { orderNo: event.orderNo },
+      where: { orderNo: event.merchantOrderNo },
     });
 
     if (!checkInOrder) {
