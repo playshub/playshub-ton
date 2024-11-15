@@ -53,7 +53,7 @@ export class CheckInService {
         timestamp: moment().unix(),
       });
 
-      await this.aeonService.createOrder({
+      const aeonOrder = await this.aeonService.createOrder({
         orderNo: checkInOrder.orderNo,
         amount: this.amount,
         userId: args.userId,
@@ -62,6 +62,7 @@ export class CheckInService {
       return this.checkInOrdersRepository.save({
         ...checkInOrder,
         status: CheckInOrderStatus.PENDING,
+        paymentUrl: aeonOrder.model.webUrl,
       });
     } catch (error) {
       this.logger.error('Check-in error');

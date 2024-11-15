@@ -40,3 +40,10 @@ export interface AeonQueryOrderSignParameters {
   appId: string;
   merchantOrderNo: string;
 }
+
+export interface AeonCreateOrderResponse {
+  model: {
+    orderNo: string;
+    webUrl: string;
+  };
+}

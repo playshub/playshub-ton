@@ -10,7 +10,6 @@ import {
   PurchaseItemOrderEntity,
   PurchaseItemOrderStatus,
 } from './entities/purchase-item-orders.entity';
-import moment from 'moment';
 import { generateOrderNo } from 'src/utils';
 import { AeonOrderStatus } from '../aeon-webhooks/dtos/aeon-callback.dto';
 
@@ -35,7 +34,7 @@ export class PurchaseItemService {
         status: PurchaseItemOrderStatus.INIT,
       });
 
-      await this.aeonService.createOrder({
+      const aeonOrder = await this.aeonService.createOrder({
         orderNo: purchaseItemOrder.orderNo,
         amount: args.amount,
         userId: args.userId,
@@ -44,6 +43,7 @@ export class PurchaseItemService {
       return this.purchaseItemOrdersRepository.save({
         ...purchaseItemOrder,
         status: PurchaseItemOrderStatus.PENDING,
+        paymentUrl: aeonOrder.model.webUrl,
       });
     } catch (error) {
       this.logger.error('Purchase item error');

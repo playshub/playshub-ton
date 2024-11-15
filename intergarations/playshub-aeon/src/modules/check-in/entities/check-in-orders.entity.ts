@@ -18,6 +18,9 @@ export class CheckInOrderEntity {
   @Column({ type: 'enum', enum: CheckInOrderStatus })
   status: CheckInOrderStatus;
 
+  @Column({ nullable: true })
+  paymentUrl?: string;
+
   @Column()
   timestamp: number;
 }

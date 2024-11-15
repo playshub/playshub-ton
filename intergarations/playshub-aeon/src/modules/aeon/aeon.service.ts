@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   AeonCreateOrderParameters,
+  AeonCreateOrderResponse,
   AeonCreateOrderSignParameters,
   AeonQueryOrderSignParameters,
   AeonWebhookCallbackSignParameters,
@@ -25,7 +26,11 @@ export class AeonService {
     this.callbackUrl = this.configService.get<string>('AEON_CALLBACK_URL');
   }
 
-  async createOrder({ orderNo, amount, userId }: CreateOrderDto) {
+  async createOrder({
+    orderNo,
+    amount,
+    userId,
+  }: CreateOrderDto): Promise<AeonCreateOrderResponse> {
     try {
       const signParams: AeonCreateOrderSignParameters = {
         appId: this.appId,
@@ -64,6 +69,7 @@ export class AeonService {
         throw new BadRequestException(data.msg);
       }
 
+      this.logger.debug(`Create order response: ${JSON.stringify(data)}`);
       return data;
     } catch (error) {
       this.logger.error('Create order failed');

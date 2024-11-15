@@ -21,6 +21,9 @@ export class PurchaseItemOrderEntity {
   @Column()
   amount: string;
 
+  @Column({ nullable: true })
+  paymentUrl?: string;
+
   @Column({ type: 'enum', enum: PurchaseItemOrderStatus })
   status: PurchaseItemOrderStatus;
 }
