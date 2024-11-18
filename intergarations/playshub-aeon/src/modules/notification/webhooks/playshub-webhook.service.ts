@@ -62,6 +62,7 @@ export class PlayshubWebhookService {
       this.logger.error(`Webhook failed to send. Error: ${e.message}`, {
         retryCount,
         url,
+        payload,
       });
       this.logger.debug(e);
       this.logger.debug(
