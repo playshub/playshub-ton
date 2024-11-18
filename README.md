@@ -1,6 +1,6 @@
 # Playshub x TON
 
-Build the web3 game publication and cross promotion platform, leverages blockchain technology and decentralized systems to offer new monetization opportunities for developers, advertisers, and players.
+🚀 Our vision: To build a cutting-edge Web3 game publishing platform that leverages blockchain technology and decentralized systems to deliver an exceptional gaming experience through captivating storylines, immersive and in-depth gameplay, real-time PvP challenges, true digital ownership via NFTs, and innovative monetization models.
 
 ## Components
 
@@ -16,6 +16,13 @@ Playshub Team
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Project status
+## Project Information
 
-- We are still developing this project following the roadmap in here: https://playshub.io/
+📝 White Paper with full details: https://docs.playshub.io
+🎮 Play on Telegram Bot: https://t.me/playshubbot
+👨‍💻 Github: https://github.com/playshub/playshub-ton
+🌐 Website: https://playshub.io
+📢 Telegram Announcement: https://t.me/PlayshubAnn
+💬 Telegram Community Chat: https://t.me/PlayshubChat
+𝕏 X Channel: https://x.com/PlaysHub
+📩 Contact to Team: https://t.me/lucasvux
