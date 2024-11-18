@@ -22,12 +22,14 @@ export class PlayshubWebhookService {
 
   @OnEvent('aeon.check-in.completed')
   async checkInPush(tx: PlayshubCheckInPayload) {
-    return this.trySendWebhook('/check-in', { account_id: tx.userId });
+    return this.trySendWebhook(`${this.webhookUrl}/check-in`, {
+      account_id: tx.userId,
+    });
   }
 
   @OnEvent('aeon.purchase-item.completed')
   async purchaseItemPush(tx: PlayshubPurchaseItemPayload) {
-    return this.trySendWebhook('/purchase-item', {
+    return this.trySendWebhook(`${this.webhookUrl}/purchase-item`, {
       account_id: tx.userId,
       item_id: tx.itemId,
     });
@@ -43,7 +45,7 @@ export class PlayshubWebhookService {
     }
 
     try {
-      const response = await fetch(this.webhookUrl + url, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +61,7 @@ export class PlayshubWebhookService {
     } catch (e) {
       this.logger.error(`Webhook failed to send. Error: ${e.message}`, {
         retryCount,
-        webhookUrl: this.webhookUrl,
+        url,
       });
       this.logger.debug(e);
       this.logger.debug(
@@ -72,9 +74,7 @@ export class PlayshubWebhookService {
       await delay(delayMs);
 
       if (retryCount == 5) {
-        this.logger.error(
-          `Max retry attempts reached for webhook: ${this.webhookUrl}`,
-        );
+        this.logger.error(`Max retry attempts reached for webhook: ${url}`);
         return;
       }
 
