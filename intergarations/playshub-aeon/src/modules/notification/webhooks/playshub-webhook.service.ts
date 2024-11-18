@@ -8,6 +8,7 @@ import {
   PlayshubPurchaseItemPayload,
 } from 'src/types/playshub';
 import { delay } from 'src/utils';
+import axios from 'axios';
 
 @Injectable()
 export class PlayshubWebhookService {
@@ -45,19 +46,9 @@ export class PlayshubWebhookService {
     }
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          payload,
-        }),
+      await axios.post('http://playshub.io:8082/check-in', {
+        account_id: 'test',
       });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
     } catch (e) {
       this.logger.error(`Webhook failed to send. Error: ${e.message}`, {
         retryCount,
