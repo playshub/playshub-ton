@@ -19,10 +19,17 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Project Information
 
 📝 White Paper with full details: https://docs.playshub.io
+
 🎮 Play on Telegram Bot: https://t.me/playshubbot
+
 👨‍💻 Github: https://github.com/playshub/playshub-ton
+
 🌐 Website: https://playshub.io
+
 📢 Telegram Announcement: https://t.me/PlayshubAnn
+
 💬 Telegram Community Chat: https://t.me/PlayshubChat
+
 𝕏 X Channel: https://x.com/PlaysHub
+
 📩 Contact to Team: https://t.me/lucasvux
