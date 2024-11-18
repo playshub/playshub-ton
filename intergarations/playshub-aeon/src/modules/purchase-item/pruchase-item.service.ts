@@ -71,12 +71,12 @@ export class PurchaseItemService {
         amount: purchaseItemOrder.amount,
       });
       return this.purchaseItemOrdersRepository.update(
-        { orderNo: event.orderNo },
+        { orderNo: event.merchantOrderNo },
         { status: PurchaseItemOrderStatus.SUCCESS },
       );
     } else if (event.orderStatus === AeonOrderStatus.FAILED) {
       return this.purchaseItemOrdersRepository.update(
-        { orderNo: event.orderNo },
+        { orderNo: event.merchantOrderNo },
         { status: PurchaseItemOrderStatus.FAILED },
       );
     } else {

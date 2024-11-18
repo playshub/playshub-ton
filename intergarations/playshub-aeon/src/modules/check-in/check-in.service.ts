@@ -39,6 +39,9 @@ export class CheckInService {
           startOfDay: moment().startOf('day').unix(),
           endOfDay: moment().endOf('day').unix(),
         })
+        .andWhere('order.status = :status', {
+          status: CheckInOrderStatus.SUCCESS,
+        })
         .getOne();
 
       if (todayCheckIn) {
@@ -89,12 +92,12 @@ export class CheckInService {
         timestamp: checkInOrder.timestamp,
       });
       return this.checkInOrdersRepository.update(
-        { orderNo: event.orderNo },
+        { orderNo: event.merchantOrderNo },
         { status: CheckInOrderStatus.SUCCESS },
       );
     } else if (event.orderStatus === AeonOrderStatus.FAILED) {
       return this.checkInOrdersRepository.update(
-        { orderNo: event.orderNo },
+        { orderNo: event.merchantOrderNo },
         { status: CheckInOrderStatus.FAILED },
       );
     } else {
