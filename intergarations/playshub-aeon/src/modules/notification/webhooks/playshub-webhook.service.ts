@@ -3,6 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { OnEvent } from '@nestjs/event-emitter';
 import {
   PlayshubCheckInPayload,
+  PlayshubGameCheckInPayload,
+  PlayshubGamePurchaseItemPayload,
   PlayshubPurchaseItemPayload,
 } from 'src/types/playshub';
 import { delay } from 'src/utils';
@@ -20,16 +22,20 @@ export class PlayshubWebhookService {
 
   @OnEvent('aeon.check-in.completed')
   async checkInPush(tx: PlayshubCheckInPayload) {
-    return this.trySendWebhook(tx);
+    return this.trySendWebhook('/check-in', { account_id: tx.userId });
   }
 
   @OnEvent('aeon.purchase-item.completed')
   async purchaseItemPush(tx: PlayshubPurchaseItemPayload) {
-    return this.trySendWebhook(tx);
+    return this.trySendWebhook('/purchase-item', {
+      account_id: tx.userId,
+      item_id: tx.itemId,
+    });
   }
 
   private async trySendWebhook(
-    tx: PlayshubCheckInPayload | PlayshubPurchaseItemPayload,
+    url: string,
+    payload: PlayshubGameCheckInPayload | PlayshubGamePurchaseItemPayload,
     retryCount = 0,
   ) {
     if (!this.webhookUrl) {
@@ -37,12 +43,14 @@ export class PlayshubWebhookService {
     }
 
     try {
-      const response = await fetch(this.webhookUrl, {
+      const response = await fetch(this.webhookUrl + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(tx),
+        body: JSON.stringify({
+          payload,
+        }),
       });
 
       if (!response.ok) {
@@ -70,7 +78,7 @@ export class PlayshubWebhookService {
         return;
       }
 
-      return this.trySendWebhook(tx, retryCount + 1);
+      return this.trySendWebhook(url, payload, retryCount + 1);
     }
   }
 }

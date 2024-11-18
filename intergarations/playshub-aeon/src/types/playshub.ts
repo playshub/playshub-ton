@@ -8,3 +8,12 @@ export interface PlayshubPurchaseItemPayload {
   itemId: string;
   amount: string;
 }
+
+export interface PlayshubGameCheckInPayload {
+  account_id: string;
+}
+
+export interface PlayshubGamePurchaseItemPayload {
+  account_id: string;
+  item_id: string;
+}
