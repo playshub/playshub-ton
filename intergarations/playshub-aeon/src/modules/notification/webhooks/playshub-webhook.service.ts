@@ -46,8 +46,8 @@ export class PlayshubWebhookService {
     }
 
     try {
-      await axios.post('http://playshub.io:8082/check-in', {
-        account_id: 'test',
+      await axios.post(url, {
+        payload,
       });
     } catch (e) {
       this.logger.error(`Webhook failed to send. Error: ${e.message}`, {
