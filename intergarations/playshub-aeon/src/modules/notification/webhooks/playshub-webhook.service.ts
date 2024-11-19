@@ -46,9 +46,7 @@ export class PlayshubWebhookService {
     }
 
     try {
-      await axios.post(url, {
-        payload,
-      });
+      await axios.post(url, payload);
     } catch (e) {
       this.logger.error(`Webhook failed to send. Error: ${e.message}`, {
         retryCount,
