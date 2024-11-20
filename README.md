@@ -6,7 +6,7 @@
 
 - [playshub-ton-sdk](./playshub-ton-sdk/README.md): TON SDK for seamless integration with the TON network (wallet connect, sending TON, etc.) in pure JavaScript, making it easy to embed within Unity. (JS, Unity)
 - [playshub-blockchain](./playshub-blockchain/README.md): Off-chain service and handle payment events on TON (NestJS, Socket)
-- [playshub-aeon](./intergarations/playshub-aeon/README.md): Playshub integrate with AEON payment gateways
+- [playshub-aeon](./playshub-aeon/README.md): Playshub integrate with AEON payment gateways
 
 ## Authors and acknowledgment
 
