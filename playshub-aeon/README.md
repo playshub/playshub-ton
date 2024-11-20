@@ -4,11 +4,11 @@
 
 ![architecture](./figures/architecture.png)
 
-1.	The user checks in or purchases items within the game.
-2.	Orders are managed, and a payment link is generated using the AEON payment protocol.
-3.	The user confirms the transaction via the payment link.
-4.	Webhook statuses from the AEON payment protocol are processed.
-5.	Notifications are sent to update the in-game workflows.
+1. The user checks in or makes in-game purchases.
+2. Orders are processed, and a payment link is generated through the AEON payment protocol.
+3. The user completes the transaction via the provided payment link.
+4. Webhook statuses from the AEON payment protocol are received and processed.
+5. Notifications are sent to update in-game workflows accordingly.
 
 # Project Structure
 
@@ -51,4 +51,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 # Project status
 
-We are still developing this project following the roadmap in here: https://playshub.io/
+We are still developing this project following the roadmap in here: https://docs.playshub.io/
