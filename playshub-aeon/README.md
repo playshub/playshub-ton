@@ -4,8 +4,11 @@
 
 ![architecture](./figures/architecture.png)
 
-- Create payment links for user purchasing using AEON payment protocol
-- Payment confirmation by AEON webhook callback
+1.	The user checks in or purchases items within the game.
+2.	Orders are managed, and a payment link is generated using the AEON payment protocol.
+3.	The user confirms the transaction via the payment link.
+4.	Webhook statuses from the AEON payment protocol are processed.
+5.	Notifications are sent to update the in-game workflows.
 
 # Project Structure
 
