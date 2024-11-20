@@ -24,6 +24,10 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 👨‍💻 Github: https://github.com/playshub/playshub-ton
 
+💎 AEON Payment Integration: Business Name: PLAYS Hub, Merchant ID: CPM202411071833
+
+▶️ AEON Payment Video Demo: https://youtube.com/shorts/W1QBfyMuEbo
+
 🌐 Website: https://playshub.io
 
 📢 Telegram Announcement: https://t.me/PlayshubAnn
