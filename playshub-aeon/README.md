@@ -9,6 +9,7 @@
 3. The user completes the transaction via the provided payment link.
 4. Webhook statuses from the AEON payment protocol are received and processed.
 5. Notifications are sent to update in-game workflows accordingly.
+6. Tracking the transaction in here: Business Name: PLAYS Hub, Merchant ID: CPM202411071833
 
 # Project Structure
 
@@ -49,6 +50,24 @@ Playshub Team
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-# Project status
+# Project Information
 
-We are still developing this project following the roadmap in here: https://docs.playshub.io/
+📝 White Paper with full details: https://docs.playshub.io
+
+🎮 Play on Telegram Bot: https://t.me/playshubbot
+
+👨‍💻 Github: https://github.com/playshub/playshub-ton
+
+💎 AEON Payment Integration: Business Name: PLAYS Hub, Merchant ID: CPM202411071833
+
+▶️ AEON Payment Video Demo: https://youtube.com/shorts/W1QBfyMuEbo
+
+🌐 Website: https://playshub.io
+
+📢 Telegram Announcement: https://t.me/PlayshubAnn
+
+💬 Telegram Community Chat: https://t.me/PlayshubChat
+
+𝕏 X Channel: https://x.com/PlaysHub
+
+📩 Contact to Team: https://t.me/lucasvux
